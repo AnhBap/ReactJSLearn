@@ -189,7 +189,15 @@ newTraineeArray.forEach(function(traineeA,index){
 //9. Sử dụng reduce, hãy tạo ra 1 string cấu thành từ điểm số của các thành viên trong mảng đã cho
 // *YOUR CODE HERRE *
 
+let stringReduce = traineeIterator.reduce((c,n)=>[n.firtName],[]);
 
+const stringReduce = traineeIterator.reduce((item, name) => {
+  let {firtName} = name;
+  console(`${item[firtName]}`);
+}, {});
+
+
+console.log(stringReduce);
 
 //10. (optional) Sử dụng reduce, hãy tạo ra 1 hàm tính được giai thừa của 1 số đầu vào. Ex: input 6 => 1*2*3*4*5*6 = 720
 // *YOUR CODE HERRE *
