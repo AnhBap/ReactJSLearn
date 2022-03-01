@@ -29,12 +29,14 @@ function ClassWrapper(){
         },
     ];
     const [studentList,setstudentList] = useState(
-      window.localStorage.getItem('text') || students
+      students
     );
    
   
     const onAddNewStudent = ()=>{
       let getFullName = document.getElementById("full-name").value;
+      document.getElementById("full-name").value ="";
+      document.getElementById("point").value =1;
       let getPoint = document.getElementById("point").value;
       let obj = {
         uuid: uuid(),
@@ -50,9 +52,6 @@ function ClassWrapper(){
       });
       setstudentList(List);
     }
-    useEffect(()=>{
-      window.localStorage.setItem('studentList',studentList)
-  })
 
     return (
         <React.Fragment>
