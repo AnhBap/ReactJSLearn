@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { v4 as uuid } from "uuid";
+import StudentInfo from '../StudentInfo';
 function ClassWrapper(){
     const students = [
         {
@@ -47,7 +48,7 @@ function ClassWrapper(){
         
     };
     const onDisbanStudent = (idremove) =>{
-      let List = studentList.filter(student => {
+      const List = studentList.filter(student => {
         return student.uuid != idremove;
       });
       setstudentList(List);
@@ -56,15 +57,11 @@ function ClassWrapper(){
     return (
         <React.Fragment>
             <div>
-                Bai 2
+                Lesson 2
             </div>
             <table>
               {studentList.map(student => (
-                <tr key={student.uuid}>
-                  <th>{student.fullName}</th>
-                  <th>{student.points}</th>
-                  <th onClick={()=> onDisbanStudent(student.uuid)}>Remove</th>
-              </tr>
+                <StudentInfo student={student} onDisbanStudentCallback={() => onDisbanStudent(student.uuid)}/>
               ))}
                  
               </table>

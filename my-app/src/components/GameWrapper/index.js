@@ -20,7 +20,7 @@ function GameWrapper(){
     return (
         <React.Fragment>
             <div>
-                Bai 1
+                Lesson 1
             </div>
             <div>
                 {isChildComponentHidden ? 'Show' : ''}
