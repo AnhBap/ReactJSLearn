@@ -1,5 +1,6 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useCallback,useMemo} from "react";
 import HideMe from "../HideMe";
+//useMemo Lưu caching , wrap-up lại data
 function GameWrapper(){
     const [isChildComponentHidden, setChildComponentHidden] = useState(false);
     const [isText, setText] = useState(
@@ -15,8 +16,13 @@ function GameWrapper(){
         }
     }
     useEffect(()=>{
+        //Moi useEffct chi xử lý 1 công việc
         window.localStorage.setItem('text',isText)
     })
+    useEffect(()=>{
+        //Moi useEffct chi xử lý 1 công việc
+       
+    },[setChildComponentHidden])
     return (
         <React.Fragment>
             <div>
