@@ -1,16 +1,46 @@
 import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider } from 'styled-components';
 // import GameWrapper from './components/GameWrapper';
 // import ClassWrapper from './components/ClassWrapper';
-import React,{useState} from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 // import BasicInformationPage from './components/containers/BasicInformationPage';
-import ToDoList  from './components/containers/ToDoList';
+import ListProducts from './pages/ListProducts';
+import theme from './constants/theme';
 function App() {
   return (
-    <div className="App">
-      <ToDoList></ToDoList>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+        <ListProducts />
+      </div>
+    </ThemeProvider>
   );
 }
+const mapStateToProps = state => {
+  return {
 
-export default App;
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
