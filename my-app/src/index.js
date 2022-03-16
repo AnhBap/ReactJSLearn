@@ -4,9 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux';
+import reduxToturialReducer from './components/redux/reducer';
+import { Route } from 'react-router-dom';
+
+
+const myStore = createStore(reduxToturialReducer);
+const rootProducer = combineReducers(
+  {
+    reduxToturialReducer
+  }
+)
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={myStore}>
+      <Route history={history}>
+        <App />
+      </Route>
+    </Provider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

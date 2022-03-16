@@ -25,6 +25,8 @@ function ToDoList(){
           tickets: [],
         },
       }
+    
+      const [content,setcontent] = React.useState();
 
     const createTicketFunc = (evt)=>{
         console.log(evt.target);
@@ -42,7 +44,7 @@ function ToDoList(){
     }
 
         const handleColumnChange = (evt,currentColumnkey,targetColumnKey)=>{
-          
+            let _slideContent = {...content};
             setColumnkey(targetColumnKey);
             let _infor = document.getElementById(currentColumnkey).innerHTML;
             document.getElementById(currentColumnkey).innerHTML ='';
