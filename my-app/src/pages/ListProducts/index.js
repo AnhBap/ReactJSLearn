@@ -147,6 +147,7 @@ const mapStateToProps = state => {
     return {
       products: state.listProductReducer.products,
       isLoading: state.listProductReducer.isLoading,
+      itemCart: state.listProductReducer.itemCart,
     };
   };
   
