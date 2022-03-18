@@ -10,6 +10,8 @@ import { CloseCircleOutlined, ExclamationCircleOutlined } from '@ant-design/icon
 const { confirm } = Modal;
 
 function ProductDetail(props) {
+  
+
   const { 
     isLoading,
     productId,
@@ -17,13 +19,14 @@ function ProductDetail(props) {
     image,
     quantity,
     sku,
-    addToCartProduct
+    addToCartProduct,
+    
   } = props;
 
-  const addTocartCallback = React.useCallback(({productId}) => addToCartProduct({productId}), [addToCartProduct]);
-  const onAddToCart = ({productId}) => {
-    
-    addTocartCallback({productId});
+  const addTocartCallback = React.useCallback((props) => addToCartProduct(props,productId), [props,productId]);
+  const onAddToCart = (props) => {
+    console.log(props);
+    addTocartCallback(props);
     
   };
   return(
@@ -35,7 +38,7 @@ function ProductDetail(props) {
                 <div>Sku: {sku}</div>
                 <div>Quantity: {quantity}</div>
             </div>
-            <button onClick={() =>onAddToCart({productId})}>Add to Cart</button>
+            <button onClick={() =>onAddToCart(props)}>Add to Cart</button>
         </div>
     </div>
   );

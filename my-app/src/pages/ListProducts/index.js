@@ -29,15 +29,23 @@ function ListProducts(props){
     const handleNumberPhoneChange = evt => {
         setnumberPhone(evt.target.value);
     };
-    const onAddToCartProduct = ({ product }) => {
+    const onAddToCartProduct = (product,productId) => {
+        setQuantityProduct(productId);
+        addToCartProduct(product,productId);
         
-        addToCartProduct({product});
     };
+
+    const setQuantityProduct = (idProduct) =>{
+        let existing = groupedProducts.find(item => item.id === idProduct);
+        if (existing) {
+            existing.quantity = existing.quantity -1;
+        } 
+    }
     React.useEffect(() => {
         if (products) {
           setGroupedProducts(products);
         }
-      }, [products]);
+    }, [products]);
     
     //CArt
     React.useEffect(() => {
@@ -97,7 +105,7 @@ function ListProducts(props){
                                         productId={product.id} 
                                         name={product.name}
                                         image={product.image}
-                                        quantity={product.quantity}
+                                        quantity={1}
                                         sku={product.sku}
                                         addToCartProduct={onAddToCartProduct}
                                     />
@@ -116,7 +124,6 @@ function ListProducts(props){
                             {
                 
                                 groupedProducts.map(product => {
-                                    console.log(product.id);
                                     return (
                                     <ProductDetail 
                                         key={product.id} 
@@ -155,7 +162,7 @@ const mapStateToProps = state => {
     return {
       dispatch,
       createProduct: (formData) => dispatch(createProduct(formData)),
-      addToCartProduct: ({ productId }) => dispatch(addToCartProduct({ productId })),
+      addToCartProduct: (formData) => dispatch(addToCartProduct(formData)),
       deleteItemCartProduct: ({ productId }) => dispatch(deleteItemCartProduct({ productId })),
     };
   };
