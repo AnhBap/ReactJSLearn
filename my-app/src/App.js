@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 // import BasicInformationPage from './components/containers/BasicInformationPage';
 import ListProducts from './pages/ListProducts';
 import theme from './constants/theme';
+import CaculatorNum from './components/ThucHanh/CaculatorNum';
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -24,7 +25,8 @@ function App() {
             Learn React
           </a>
         </header>
-        <ListProducts />
+        {/* <ListProducts /> */}
+        <CaculatorNum/>
       </div>
     </ThemeProvider>
   );
