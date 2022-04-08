@@ -176,9 +176,6 @@ const initialValues = {
     province: "",
 };
 
-
-
-
 const validationSchema = Yup.object().shape({
     name: Yup.string().required("Yêu cầu nhập tên"),
     cmtnd: Yup.string().min(9, 'Nhập ít nhất 9 số').max(12, 'Nhập không quá 12 số').required("Yêu cầu nhập chứng minh thư nhân dân"),
@@ -187,7 +184,6 @@ const validationSchema = Yup.object().shape({
     position: Yup.string().required("Yêu cầu nhập chức vụ"),
     province: Yup.string().required("Yêu cầu nhập tỉnh thành"),
 });
-
 
 const KhaiBaoYTe = withFormik({
     mapPropsToValues: (initialValues) => {
@@ -203,11 +199,4 @@ const KhaiBaoYTe = withFormik({
         }, 1000);
     }
 })(form);
-
-
-
-    
-
-
-
 export default KhaiBaoYTe;
