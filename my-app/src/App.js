@@ -8,6 +8,8 @@ import { connect, Provider } from 'react-redux';
 //import ListProducts from './pages/ListProducts';
 import Login from './components/saga/Login';
 import User from './components/saga/User';
+import ForMik from './components/ForMik';
+import KhaiBaoYTe from './components/KhaiBaoYTe';
 import {
   BrowserRouter as Router,
   Routes,
@@ -31,7 +33,8 @@ function App() {
   return (
     <Provider store={store}>
        <Router>
-       <ListFruit></ListFruit>
+         <KhaiBaoYTe></KhaiBaoYTe>
+       {/* <ListFruit></ListFruit> */}
       {/* <RouteApp /> */}
     </Router>
 
