@@ -1,17 +1,21 @@
 import React from 'react';
 import { isEqual } from 'lodash';
 import { connect } from 'react-redux';
+
+
 import Input from 'antd/lib/input';
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import Button from 'antd/lib/button';
 import Modal from 'antd/lib/modal';
 import { Layout } from 'antd';
+
 import { v4 as uuid } from "uuid";
 import { groupBy, isEmpty } from 'lodash';
 import ProductDetail from '../ProductDetail';
-
 import { createProduct , addToCartProduct , deleteItemCartProduct} from './actions';
+
+
 const { Header, Footer, Sider, Content } = Layout;
 function ListProducts(props){
     const { 
@@ -92,7 +96,9 @@ function ListProducts(props){
                     <h1>
                         Mini Cart
                     </h1>
-                    <Content>
+                    
+                </Sider>
+                <Content>
                         <Row>
                             <Col span={24}>
                             {
@@ -116,7 +122,6 @@ function ListProducts(props){
                             </Col>
                         </Row>
                     </Content>
-                </Sider>
                 <Layout>
                     <Content>
                         <Row>
@@ -151,6 +156,7 @@ function ListProducts(props){
     );
 }
 const mapStateToProps = state => {
+    //listProductReducer : reducerr
     return {
       products: state.listProductReducer.products,
       isLoading: state.listProductReducer.isLoading,
@@ -161,8 +167,8 @@ const mapStateToProps = state => {
   const mapDispatchToProps = dispatch => {
     return {
       dispatch,
-      createProduct: (formData) => dispatch(createProduct(formData)),
-      addToCartProduct: (formData) => dispatch(addToCartProduct(formData)),
+      createProduct: (product) => dispatch(createProduct(product)),
+      addToCartProduct: (product) => dispatch(addToCartProduct(product)),
       deleteItemCartProduct: ({ productId }) => dispatch(deleteItemCartProduct({ productId })),
     };
   };

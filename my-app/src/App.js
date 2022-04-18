@@ -1,3 +1,4 @@
+import 'antd/dist/antd.css';
 import './App.css';
 import { ThemeProvider } from 'styled-components';
 // import GameWrapper from './components/GameWrapper';
@@ -5,11 +6,11 @@ import { ThemeProvider } from 'styled-components';
 import React from 'react';
 import { connect, Provider } from 'react-redux';
 // import BasicInformationPage from './components/containers/BasicInformationPage';
-//import ListProducts from './pages/ListProducts';
+import ListProducts from './pages/ListProducts';
 import Login from './components/saga/Login';
 import User from './components/saga/User';
-import ForMik from './components/ForMik';
-import KhaiBaoYTe from './components/KhaiBaoYTe';
+// import ForMik from './components/ForMik';
+// import KhaiBaoYTe from './components/KhaiBaoYTe';
 import {
   BrowserRouter as Router,
   Routes,
@@ -31,16 +32,12 @@ const RouteApp = () => {
 };
 function App() {
   return (
-    <Provider store={store}>
-       <Router>
-         <KhaiBaoYTe></KhaiBaoYTe>
-       {/* <ListFruit></ListFruit> */}
-      {/* <RouteApp /> */}
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <RouteApp /> 
+      </Router>
+    </ThemeProvider>
 
-     
-        
-    </Provider>
     // <ThemeProvider theme={theme}>
     //   <div className="App">
     //     <header className="App-header">

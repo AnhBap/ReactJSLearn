@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeEvery, takeLatest , delay } from 'redux-saga/effects'
 import { FETCH_USER, FETCH_USER_SUCCESS, LOGIN, LOGIN_SUCCESS } from './action';
-const BaseURL = 'http://localhost/traveler/wp-json/traveler/get-logo-mobile';
+const BaseURL = 'https://jsonplaceholder.typicode.com/users';
  
 function* getUser(action) {
     try {

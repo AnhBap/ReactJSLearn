@@ -36,6 +36,20 @@ import {
         
         break;      
       case DELETE_PRODUCT:
+        let currentCart = {...state};
+        let existingDelete = _state.itemCart.find(item => item.id === action.payload.id);
+        if (existingDelete) {
+          existing.quantity = existing.quantity - 1;
+          _state = {
+            ...state}
+        }else {
+          let cart = currentCart.itemCart.filter(item => item.id != action.payload.id);
+          _state = {
+            ...state,
+            itemCart: cart
+          };
+        }
+
         
         break;
       default:

@@ -16,12 +16,16 @@ function User() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr key={users.status}>
-                                <td>{users.status}</td>
-                                <td>{users.url}</td>
-                                <td>{users.url}</td>
-                                <td>{users.url}</td>
+                    {
+                        users.map((user) => (
+                            <tr key={user.id}>
+                                <td>{user.id}</td>
+                                <td>{user.username}</td>
+                                <td>{user.email}</td>
+                                <td>{user.website}</td>
                             </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </div>
