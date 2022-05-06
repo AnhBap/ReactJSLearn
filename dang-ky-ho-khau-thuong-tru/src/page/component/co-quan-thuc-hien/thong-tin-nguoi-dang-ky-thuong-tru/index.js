@@ -6,32 +6,50 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { TextField,FormGroup,Button,Grid, FormControl, Alert, Select, SelectChangeEvent, MenuItem, Paper, InputLabel, Container, Radio, RadioGroup, FormControlLabel, Checkbox } from "@mui/material";
+import { TextField, FormGroup, Button, Grid, FormControl, Alert, Select, SelectChangeEvent, MenuItem, Paper, InputLabel, Container, Radio, RadioGroup, FormControlLabel, Checkbox } from "@mui/material";
 const ThongTinNguoiDangKy = props => {
 
     const [gioitinh, setGioitinh] = React.useState('');
     const [cmtnd, setCmtnd] = React.useState('');
+    const [sohochieu, setSohochieu] = React.useState('');
+    const [sodienthoai, setSodienthoai] = React.useState('');
+    const [email, setEmail] = React.useState('');
+
     const handleChangeGioiTinh = (event: SelectChangeEvent) => {
         setGioitinh(event.target.value);
     };
     const handleChangeCmtnd = (event: SelectChangeEvent) => {
         setCmtnd(event.target.value);
     };
-    
+
 
     const [ngaykhaisinh, setNgaykhaisinh] = React.useState(
         new Date(),
-      );
-    
-      const handleChange = (newValue: Date) => {
+    );
+
+    const handleChange = (newValue: Date) => {
         setNgaykhaisinh(newValue);
-      };
+    };
+
+    const handleChangeSohochieu = (event) => {
+        setSohochieu(event.target.value);
+    }
+
+    const handleChangeSodienthoai = (event) => {
+        setSodienthoai(event.target.value);
+    }
+
+    const handleChangeEmail = (event) => {
+        setEmail(event.target.value);
+    }
+
+    
     return (
         <React.Fragment>
             <h2 align="left">
                 Thông tin người đăng ký thường trú
             </h2>
-            <FormControl fullWidth  sx={{ m: 1 }}>
+            <FormControl fullWidth sx={{ m: 1 }}>
                 <FormGroup aria-label="position" row>
                     <FormControlLabel
                         value="nguoi-khai-thong-tin-la-nguoi-dang-ky-thuong-tru"
@@ -39,20 +57,20 @@ const ThongTinNguoiDangKy = props => {
                         label="Người khai thông tin là người đăng ký thường trú"
                         labelPlacement="end"
                         name="nguoi-khai-thong-tin-la-nguoi-dang-ky-thuong-tru"
-                        />
+                    />
                     <FormControlLabel
                         value="khai-ho"
                         control={<Checkbox />}
                         label="Khai hộ"
                         labelPlacement="end"
                         name="khai-ho"
-                        />
+                    />
                 </FormGroup>
             </FormControl>
             <Grid container spacing={2}>
                 <Grid item xs={3}>
-                    <FormControl fullWidth  sx={{ m: 1 }}>
-                        <TextField sx={{ width: '100%'}}
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <TextField sx={{ width: '100%' }}
                             id="name" name="name" type="text"
                             label={"Họ và tên"}
                             variant="outlined"
@@ -62,21 +80,21 @@ const ThongTinNguoiDangKy = props => {
                     </FormControl>
                 </Grid>
                 <Grid item xs={3}>
-                    <FormControl fullWidth  sx={{ m: 1 }}>
+                    <FormControl fullWidth sx={{ m: 1 }}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DesktopDatePicker
-                            label="Ngày khai sinh"
-                            inputFormat="dd/MM/yyyy"
-                            margin="dense"
-                            value={ngaykhaisinh}
-                            onChange={handleChange}
-                            renderInput={(params) => <TextField {...params} />}
+                                label="Ngày khai sinh"
+                                inputFormat="dd/MM/yyyy"
+                                margin="dense"
+                                value={ngaykhaisinh}
+                                onChange={handleChange}
+                                renderInput={(params) => <TextField {...params} />}
                             />
                         </LocalizationProvider>
                     </FormControl>
                 </Grid>
                 <Grid item xs={3}>
-                    <FormControl fullWidth  sx={{ m: 1 }}>
+                    <FormControl fullWidth sx={{ m: 1 }}>
                         <InputLabel id="gioi-tinh-label" align="left">Giới tính</InputLabel>
                         <Select
                             labelId="gioi-tinh-label"
@@ -95,8 +113,8 @@ const ThongTinNguoiDangKy = props => {
                     </FormControl>
                 </Grid>
                 <Grid item xs={3}>
-                    <FormControl fullWidth  sx={{ m: 1 }}>
-                        <TextField sx={{ width: '100%'}}
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <TextField sx={{ width: '100%' }}
                             id="cmtnd" name="cmtnd" type="text"
                             label={"Số CMND/CCCD"}
                             variant="outlined"
@@ -108,7 +126,50 @@ const ThongTinNguoiDangKy = props => {
                     </FormControl>
                 </Grid>
             </Grid>
-            
+            <Grid container spacing={2}>
+
+                <Grid item xs={12} sm={4}>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <TextField sx={{ width: '100%' }}
+                            id="sohochieu" name="sohochieu" type="text"
+                            label={"Số hộ chiếu"}
+                            variant="outlined"
+                            fullWidth
+                            value={sohochieu}
+                            onChange={(event) => handleChangeSohochieu(event)}
+
+                        />
+                    </FormControl>
+                </Grid>
+
+                <Grid item xs={12} sm={4}>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <TextField sx={{ width: '100%' }}
+                            id="sodienthoai" name="sodienthoai" type="number"
+                            label={"Số điện thoại"}
+                            variant="outlined"
+                            fullWidth
+                            value={sodienthoai}
+                            onChange={(event) => handleChangeSodienthoai(event)}
+
+                        />
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <TextField sx={{ width: '100%' }}
+                            id="email" name="email" type="email"
+                            label={"Email"}
+                            variant="outlined"
+                            fullWidth
+                            value={email}
+                            onChange={(event) => handleChangeEmail(event)}
+
+                        />
+                    </FormControl>
+                </Grid>
+            </Grid>
+
         </React.Fragment>
     );
 }
