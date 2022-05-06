@@ -14,7 +14,31 @@ const ThongTinNguoiDangKy = props => {
     const [sohochieu, setSohochieu] = React.useState('');
     const [sodienthoai, setSodienthoai] = React.useState('');
     const [email, setEmail] = React.useState('');
+    const [quocgia, setQuocGia] = React.useState('');
+    const [tinhthanhThuongTru, setTinhThanhThuongTru] = React.useState('');
+    const [quanhuyenThuongTru, setQuanHuyenThuongTru] = React.useState('');
+    const [phuongxaThuongTru, setPhuongXaThuongTru] = React.useState('');
+    const [diachiThuongTru, setDiaChiThuongTru] = React.useState('');
 
+    const handleChangeQuocGia = (event: SelectChangeEvent) => {
+        setQuocGia(event.target.value);
+    };
+    const handleChangeThanhPhoThuongTru = (event: SelectChangeEvent) => {
+        setTinhThanhThuongTru(event.target.value);
+    };
+    const handleChangeQuanHuyenThuongTru = (event: SelectChangeEvent) => {
+        setQuanHuyenThuongTru(event.target.value);
+    };
+    const handleChangePhuongXaThuongTru = (event: SelectChangeEvent) => {
+        setPhuongXaThuongTru(event.target.value);
+    };
+
+    const handleChangeDiaChiThuongTru = (event: SelectChangeEvent) => {
+        setDiaChiThuongTru(event.target.value);
+    };
+
+    
+    
     const handleChangeGioiTinh = (event: SelectChangeEvent) => {
         setGioitinh(event.target.value);
     };
@@ -169,7 +193,116 @@ const ThongTinNguoiDangKy = props => {
                     </FormControl>
                 </Grid>
             </Grid>
+            <FormControl fullWidth sx={{ m: 1 }}>
+                <FormGroup aria-label="position" row>
+                    <FormControlLabel
+                        value="noi-thuong-tru"
+                        control={<Checkbox />}
+                        label="Nơi thường trú là nơi ở hiện tại"
+                        labelPlacement="end"
+                        name="noi-thuong-tru"
+                    />
+                </FormGroup>
+            </FormControl>
+            <Grid container spacing={2}>
+                <Grid item xs={3}>
+                    <FormControl fullWidth  sx={{ m: 1 }}>
+                        <InputLabel id="quoc-gia-label" align="left">Quốc gia</InputLabel>
+                        <Select
+                            labelId="quoc-gia-label"
+                            id="quoc-gia"
+                            align="left"
+                            value={quocgia}
+                            label="Quốc gia"
+                            onChange={handleChangeQuocGia}
+                        >
+                            <MenuItem value="">
+                                <em>Chưa lựa chọn</em>
+                            </MenuItem>
+                            <MenuItem value={'Việt Nam'}>Việt Nam</MenuItem>
+                            <MenuItem value={'USA'}>USA</MenuItem>
+                            <MenuItem value={'Trung Quốc'}>Trung Quốc</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={3}>
+                    <FormControl fullWidth  sx={{ m: 1 }}>
+                        <InputLabel id="tinh-thanhpho-thuong-tru-label" align="left">Tỉnh / thành phố</InputLabel>
+                        <Select
+                            labelId="tinh-thanhpho-thuong-tru-label"
+                            id="tinh-thanhpho-thuong-tru"
+                            align="left"
+                            value={tinhthanhThuongTru}
+                            label="Tỉnh / thành phố"
+                            onChange={handleChangeThanhPhoThuongTru}
+                        >
+                            <MenuItem value="">
+                                <em>Chưa lựa chọn</em>
+                            </MenuItem>
+                            <MenuItem value={'HaNoi'}>Hà Nội</MenuItem>
+                            <MenuItem value={'DaNang'}>Đà Nẵng</MenuItem>
+                            <MenuItem value={'HoChiMinh'}>TP.Hồ Chí Minh</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={3}>
+                    <FormControl fullWidth  sx={{ m: 1 }}>
+                        <InputLabel id="quanhuyenThuongTru-label">Quận/ Huyên</InputLabel>
+                        <Select
+                            labelId="quanhuyenThuongTru-label"
+                            id="quanhuyenThuongTru"
+                            value={quanhuyenThuongTru}
+                            label="Quận/ Huyên"
+                            onChange={handleChangeQuanHuyenThuongTru}
+                            align="left"
+                        >
+                            <MenuItem value="">
+                                <em>Chưa lựa chọn</em>
+                            </MenuItem>
+                            <MenuItem value={'HaNoi'}>Hà Nội</MenuItem>
+                            <MenuItem value={'DaNang'}>Đà Nẵng</MenuItem>
+                            <MenuItem value={'HoChiMinh'}>TP.Hồ Chí Minh</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={3}>
+                    <FormControl fullWidth  sx={{ m: 1 }}>
+                        <InputLabel id="phuongxaThuongTru-label">Phường / Xã</InputLabel>
+                        <Select
+                            labelId="phuongxaThuongTru-label"
+                            id="phuongxaThuongTru"
+                            value={phuongxaThuongTru}
+                            label="Phường / Xã"
+                            onChange={handleChangePhuongXaThuongTru}
+                            align="left"
+                        >
+                            <MenuItem value="">
+                                <em>Chưa lựa chọn</em>
+                            </MenuItem>
+                            <MenuItem value={'Cầu Diễn'}>Cầu Diễn</MenuItem>
+                            <MenuItem value={'Mỹ Đình 1'}>Mỹ Đình 1</MenuItem>
+                            <MenuItem value={'Mỹ Đình 2'}>Mỹ Đình 2</MenuItem>
+                            <MenuItem value={'Phú Đô'}>Phú Đô</MenuItem>
+                            <MenuItem value={'Mễ Trì'}>Mễ Trì</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <TextField sx={{ width: '100%' }}
+                            id="diachiThuongTru" name="diachiThuongTru" type="text"
+                            label={"Địa chỉ (số nhà, đường phố, thôn, xóm, làng, ấp, bản, buôn, phum, sóc)"}
+                            variant="outlined"
+                            fullWidth
+                            value={diachiThuongTru}
+                            onChange={(event) => handleChangeDiaChiThuongTru(event)}
 
+                        />
+                    </FormControl>
+                </Grid>
+            </Grid>
         </React.Fragment>
     );
 }

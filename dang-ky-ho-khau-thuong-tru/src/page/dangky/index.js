@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import axios from "axios";
 import CoQuanThucHien from "../component/co-quan-thuc-hien";
 import ThongTinNguoiDangKy from "../component/co-quan-thuc-hien/thong-tin-nguoi-dang-ky-thuong-tru";
+import ThongTinDangKyTamTru from "../component/co-quan-thuc-hien/thong-tin-nguoi-dang-ky-tam-tru";
 const FormDangKy = props => {
     return (
         <Container className="container">
@@ -12,6 +13,7 @@ const FormDangKy = props => {
                 <h2 align="center">Đăng ký thường trú</h2>
                 <CoQuanThucHien></CoQuanThucHien>
                 <ThongTinNguoiDangKy></ThongTinNguoiDangKy>
+                <ThongTinDangKyTamTru></ThongTinDangKyTamTru>
             </Paper>
         </Container>
     );
