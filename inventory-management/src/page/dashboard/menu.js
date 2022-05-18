@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined';
 import AddBusinessOutlinedIcon from '@mui/icons-material/AddBusinessOutlined';
-import PeopleIcon from '@mui/icons-material/People';
+
 import Typography from '@mui/material/Typography';
 import {
     Link as RouterLink,
@@ -23,11 +23,11 @@ import { StaticRouter } from 'react-router-dom/server';
 function Router(props) {
     const { children } = props;
     if (typeof window === 'undefined') {
-        return <StaticRouter location="/drafts">{children}</StaticRouter>;
+        return <StaticRouter location="/">{children}</StaticRouter>;
     }
 
     return (
-        <MemoryRouter initialEntries={['/drafts']} initialIndex={0}>
+        <MemoryRouter initialEntries={['/']} initialIndex={0}>
             {children}
         </MemoryRouter>
     );
@@ -64,32 +64,20 @@ ListItemLink.propTypes = {
     to: PropTypes.string.isRequired,
 };
 
-function Content() {
-    const location = useLocation();
-    return (
-        <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
-            Current route: {location.pathname}
-        </Typography>
-    );
-}
 
-export default function MenuSidebar() {
-    return (
-        <Router>
-            <Box sx={{ width: 360 }}>
-                <Routes>
-                    <Route path="*" element={<Content />} />
-                </Routes>
 
-                <Paper elevation={0}>
-                    <List aria-label="main mailbox folders">
-                        <ListItemLink to="/dashboard" primary="Dashboard" icon={<DashboardIcon />} />
-                        <ListItemLink to="/category" primary="Category" icon={<WindowOutlinedIcon />} />
-                        <ListItemLink to="/product" primary="Product" icon={<AddBusinessOutlinedIcon />} />
-                        <ListItemLink to="/user" primary="User" icon={<PeopleIcon />} />
-                    </List>
-                </Paper>
-            </Box>
-        </Router>
+export default function ListRouter() {
+    return (
+        <Box sx={{ width: 360 }}>
+
+            <Paper elevation={0}>
+                <List aria-label="main mailbox folders">
+                    <ListItemLink to="/" primary="Dashboard" icon={<DashboardIcon />} />
+                    <ListItemLink to="/category" primary="Category" icon={<WindowOutlinedIcon />} />
+                    <ListItemLink to="/product" primary="Product" icon={<AddBusinessOutlinedIcon />} />
+                    <ListItemLink to="/user" primary="User" icon={<AddBusinessOutlinedIcon />} />
+                </List>
+            </Paper>
+        </Box>
     );
 }
